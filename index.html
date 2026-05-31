@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Routing and Navigation System</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-container">
+<aside class="sidebar fade-in">
+<h1>Routing and Navigation System</h1>
+<div class="control-group">
+<label>Source City</label>
+<select id="sourceSelect"></select>
+</div>
+<div class="control-group">
+<label>Destination City</label>
+<select id="targetSelect"></select>
+</div>
+<div class="control-group">
+<label>Transport Mode</label>
+<select id="modeSelect">
+<option value="Car">Car (70 km/h)</option>
+<option value="Bus">Bus (50 km/h)</option>
+<option value="Train">Train (90 km/h)</option>
+<option value="Bike">Bike (40 km/h)</option>
+</select>
+</div>
+<div class="control-group">
+ 
+<label>Algorithm</label>
+<select id="algoSelect">
+<option value="Dijkstra">Dijkstra's Algorithm</option>
+<option value="A*">A* Algorithm</option>
+<option value="BFS">Breadth-First Search (BFS)</option>
+</select>
+</div>
+<div class="control-group">
+<label>Animation Speed</label>
+<select id="speedSelect">
+<option value="1000">Slow</option>
+<option value="500" selected>Medium</option>
+<option value="150"> Fast</option>
+</select>
+</div>
+<button id="findRouteBtn">Find Route <span id="spinner" class="hidden"></span></button>
+<div id="resultsPanel" class="results-panel hidden">
+<h3>Route Information</h3>
+<p><strong>Total Distance:</strong> <span id="outDist"></span> km</p>
+<p><strong>Est. Time:</strong> <span id="outTime"></span> hrs</p>
+<p><strong>Stops:</strong> <span id="outStops"></span></p>
+<h4>Algorithm Comparison</h4>
+<table class="compare-table">
+<thead>
+<tr><th>Algorithm</th><th>Dist (km)</th><th>Time (h)</th><th>Stops</th></tr>
+</thead>
+<tbody id="compareBody"></tbody>
+</table>
+</div>
+<div class="explain-panel">
+<h4>Algorithms Used</h4>
+<p><strong>Dijkstra:</strong> Finds the shortest weighted path uniformly.</p>
+<p><strong>A*:</strong> Uses a geographical heuristic to find the path more efficiently.</p>
+<p><strong>BFS:</strong> Finds the path with the fewest number of hops, ignoring distance.</p>
+</div>
+ 
+</aside>
+<main class="main-content fade-in">
+<div class="view-toggles">
+<button id="btnMap" class="active">Map View</button>
+<button id="btnGraph">Graph View</button>
+<button id="btnResetView" title="Reset Graph View"></button>
+</div>
+<div id="mapContainer" class="view-container active"></div>
+<div id="graphContainer" class="view-container"></div>
+</main>
+</div>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html> 
